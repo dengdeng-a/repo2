@@ -1,0 +1,6 @@
+com\imooc\mvcmodeo\model\Chapter.class
+com\imooc\mvcmodeo\controller\CourseController.class
+com\imooc\mvcmodeo\model\Course.class
+com\imooc\mvcmodeo\service\impl\CourseServiceImpl.class
+com\imooc\mvcmodeo\service\CourseService.class
+com\imooc\mvcmodeo\controller\HelloMvcController.class
