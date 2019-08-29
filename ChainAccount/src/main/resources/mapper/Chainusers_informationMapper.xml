@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qw.chain.dao.Chainusers_informationMapper">
+  <resultMap id="BaseResultMap" type="com.qw.chain.bean.ChainUsers_information">
+    <id column="c_usersinfor_id" jdbcType="INTEGER" property="c_usersinfor_id" />
+    <result column="c_usersinfor_name" jdbcType="VARCHAR" property="c_usersinfor_name" />
+    <result column="c_userstypes_id" jdbcType="INTEGER" property="c_userstypes_id" />
+    <result column="c_usersinfor_telphone" jdbcType="VARCHAR" property="c_usersinfor_telphone" />
+    <result column="c_usersinfor_password" jdbcType="VARCHAR" property="c_usersinfor_password" />
+    <result column="c_usersinfor_publickey" jdbcType="VARCHAR" property="c_usersinfor_publickey" />
+    <result column="c_usersinfor_sex" jdbcType="VARCHAR" property="c_usersinfor_sex" />
+    <result column="c_usersinfor_images" jdbcType="VARCHAR" property="c_usersinfor_images" />
+    <result column="c_userstypes_name" jdbcType="VARCHAR" property="c_userstypes_name" />
+  </resultMap>
+  
+  <sql id="zd">
+	 	u.c_usersinfor_id,u.c_usersinfor_name,u.c_usersinfor_telphone,u.c_usersinfor_password,u.c_usersinfor_publickey,u.c_usersinfor_sex,u.c_usersinfor_images,t.c_userstypes_name,t.c_userstypes_id
+  </sql>
+  
+  <!--  --><select id="selectuserbyuphone" parameterType="com.qw.chain.bean.ChainUsers_information" resultMap="BaseResultMap"> 
+		<!-- 用include标签引入sql片段，refid写定义sql片段的id，where标签不要写在片段里 -->
+		select * from chainusers_information where c_usersinfor_telphone=#{c_usersinfor_telphone}
+	</select>
+	<!-- --> <select id="selectupassByupass" parameterType="com.qw.chain.bean.ChainUsers_information" resultMap="BaseResultMap">
+		<!-- 用include标签引入sql片段，refid写定义sql片段的id，where标签不要写在片段里 -->
+		select * from chainusers_information where  c_usersinfor_telphone=#{c_usersinfor_telphone} 
+	</select>
+	<select id="findByUserPhone" parameterType="java.lang.String" resultMap="BaseResultMap" >
+    select  * from chainusers_information 
+    where c_usersinfor_telphone = #{c_usersinfor_telphone,jdbcType=VARCHAR}
+  </select>
+  <select id="selectuserbyuname" parameterType="com.qw.chain.bean.ChainUsers_information" resultMap="BaseResultMap" >
+    select  * from chainusers_information 
+    where c_usersinfor_name = #{c_usersinfor_name,jdbcType=VARCHAR}
+  </select>
+  <select id="selectuserbyregistuphone" parameterType="com.qw.chain.bean.ChainUsers_information" resultMap="BaseResultMap"> 
+		<!-- 用include标签引入sql片段，refid写定义sql片段的id，where标签不要写在片段里 -->
+		select * from chainusers_information where c_usersinfor_telphone=#{c_usersinfor_telphone}
+	</select>
+	<select id="selectuserbyregistupass" parameterType="com.qw.chain.bean.ChainUsers_information" resultMap="BaseResultMap">
+		<!-- 用include标签引入sql片段，refid写定义sql片段的id，where标签不要写在片段里 -->
+		select * from chainusers_information where  c_usersinfor_telphone=#{c_usersinfor_telphone} 
+	</select>
+ <!--  	<select id="selectUsers" parameterType="com.qw.chain.bean.ChainUsers_information" resultMap="BaseResultMap" resultType="com.qw.chain.bean.ChainUsers_information"> -->
+		<!-- 用include标签引入sql片段，refid写定义sql片段的id，where标签不要写在片段里 -->
+<!-- 		select <include refid="zd"/> from users
+		 <where>
+            
+            <if test="u_name!=null and u_name!=''">
+                u_name=#{u_name} and
+            </if>
+            <if test="u_pass!=null and u_pass!=''">
+                 u_pass=#{u_pass}
+            </if>
+		</where>
+	</select> -->
+<insert id="registUsersInfo" parameterType="com.qw.chain.bean.ChainUsers_information">
+    insert into chainusers_information (c_usersinfor_id, c_usersinfor_name, c_userstypes_id, c_usersinfor_telphone,c_usersinfor_password,c_usersinfor_publickey,c_usersinfor_sex,c_usersinfor_images)
+    values (#{c_usersinfor_id,jdbcType=INTEGER}, #{c_usersinfor_name,jdbcType=VARCHAR}, #{c_usersinfor_password,jdbcType=VARCHAR}, #{c_userstypes_id,jdbcType=INTEGER}, #{c_usersinfor_telphone,jdbcType=VARCHAR}, #{c_usersinfor_publickey,jdbcType=VARCHAR}, #{c_usersinfor_sex,jdbcType=VARCHAR}, #{c_usersinfor_images,jdbcType=VARCHAR})
+  </insert>
+  
+  
+   <select id="selectOneById" parameterType="com.qw.chain.bean.ChainUsers_information" resultMap="BaseResultMap" >
+    select <include refid="zd"/>
+	from chainusers_information as u
+	left join chainusers_types as t
+	on u.c_userstypes_id=t.c_userstypes_id
+    where u.c_usersinfor_id = #{u.c_usersinfor_id,jdbcType=INTEGER}
+  </select>
+
+	<update id="updateUser" parameterType="com.qw.chain.bean.ChainUsers_information">
+	    update chainusers_information
+	    <set>
+	      <if test="c_usersinfor_name != null">
+	        c_usersinfor_name = #{c_usersinfor_name,jdbcType=VARCHAR},
+	      </if>
+	      <if test="c_usersinfor_telphone != null">
+	        c_usersinfor_telphone = #{c_usersinfor_telphone,jdbcType=VARCHAR},
+	      </if>
+	      <if test="c_usersinfor_password != null">
+	        c_usersinfor_password = #{c_usersinfor_password,jdbcType=VARCHAR},
+	      </if>
+	      <if test="c_usersinfor_sex != null">
+	        c_usersinfor_sex = #{c_usersinfor_sex,jdbcType=VARCHAR},
+	      </if>
+	      <if test="c_userstypes_id != null">
+	        c_userstypes_id = #{c_userstypes_id,jdbcType=INTEGER},
+	      </if>
+	    </set>
+	    where c_usersinfor_id = #{c_usersinfor_id,jdbcType=INTEGER}
+	  </update>
+	  
+	  <update id="changeUploadImg" parameterType="com.qw.chain.bean.ChainUsers_information">
+	    update chainusers_information
+	    <set>
+	      <if test="c_usersinfor_images != null">
+	        c_usersinfor_images = #{c_usersinfor_images,jdbcType=VARCHAR},
+	      </if>
+	    </set>
+	    where c_usersinfor_id = #{c_usersinfor_id,jdbcType=INTEGER}
+	  </update>
+	  
+	  
+	  <update id="changepwd" parameterType="com.qw.chain.bean.ChainUsers_information">
+	    update chainusers_information
+	    <set>
+	      <if test="c_usersinfor_password != null">
+	        c_usersinfor_password = #{c_usersinfor_password,jdbcType=VARCHAR},
+	      </if>
+	    </set>
+	    where c_usersinfor_id = #{c_usersinfor_id,jdbcType=INTEGER}
+	  </update>
+  
+  
+</mapper>

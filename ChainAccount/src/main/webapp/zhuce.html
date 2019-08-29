@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>区块链账户系统</title>
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<!-- <script type="text/javascript" src="./static/jquery/jquery-3.1.1.js"></script> -->
+</head>
+<body align="center">
+<div class="top"> <img src="img/logo.png" alt="">—&nbsp;&nbsp;账户系统</div>
+      <!-- <video controls="controls" autoplay="autoplay">
+		 <source src="movie.ogg" type="video/ogg" />
+		 <source src="video/rice1.mp4" type="video/mp4" />
+		 Your browser does not support the video tag.
+		</video> -->
+		<div class="container">
+        <div class="form row">
+            <div class="form-horizontal col-md-offset-3" id="login_form">
+                <h3 class="form-title">注册</h3>
+                <div class="col-md-9">
+                <form  action="chainusersregeist" enctype="multipart/form-data" method="POST"  id="regeistForm">
+                    
+                        <input class="form-control required" type="text" placeholder="Username" id="c_usersinfor_name" name="c_usersinfor_name"  />
+                    
+                    
+                            <input class="form-control required" type="password" placeholder="Password" id="c_usersinfor_password" name="c_usersinfor_password" />
+                    
+                            <input class="form-control required" type="text" placeholder="Telphone" id="c_usersinfor_telphone" name="c_usersinfor_telphone" />
+                    
+                            <input class="form-control required" type="text" placeholder="Publickey" id="c_usersinfor_publickey" name="c_usersinfor_publickey" />
+                    
+                            <input class="form-control required" type="file"  id="c_usersinfor_images" name="c_usersinfor_images" />
+                    
+                            <select id="c_userstypes_id" name="c_userstypes_id" class="selectpicker show-tick form-control" >
+                                        <option value="1">游客</option>
+                                        <option value="2">购买者</option>
+                                        <option value="3">商户</option>
+                             </select>
+                    
+                            <input type="radio" name="c_usersinfor_sex" value="男"/>男</br>
+                            <input type="radio" name="c_usersinfor_sex" value="女"/>女
+                      
+                   
+                        <input type="submit"  value="注册"/>
+                    
+               </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+  <!--   <script type="text/javascript">
+function regists() { 
+   var formData = new FormData($("#regeistForm")[0]); 
+   alert(formData);
+   $.ajax({ 
+     url:"/chainusersregeist", 
+     type:"POST", 
+     data: formData, 
+     async: false, 
+     cache: false, 
+     contentType: false, 
+     processData: false, 
+     success: function(result) {
+    	 alert(result.c_usersinfor_name);
+     }, 
+     error: function(data) {   
+     } 
+   }); 
+}
+</script> -->
+</html>
