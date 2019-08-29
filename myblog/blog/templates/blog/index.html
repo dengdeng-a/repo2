@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+        <h1><a href="{% url 'blog:dengchu' %}">登出</a></h1>
+        <h1><a href="{% url 'blog:user_center' %}">个人中心</a></h1>
+    {% else %}
+        <h1><a href="{% url 'blog:denglu' %}">登录</a></h1>
+        <h1><a href="{% url 'blog:zhuce' %}">注册</a></h1>
+    {% endif %}
+
+
+    <h1>
+        <a href="{% url 'blog:edit_page' 0%}">新文章</a>
+    </h1>
+    {% for article in articles %}
+        <a href="{% url 'blog:article_page' article.id %}">{{ article.title }}</a>
+        <br/>
+    {% endfor %}
+</body>
+</html>

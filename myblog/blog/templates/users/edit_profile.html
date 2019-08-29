@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1><a href="{% url 'blog:index' %}">回到主页</a></h1>
+<h1><a href="{% url 'blog:user_center' %}">个人中心</a></h1>
+<h1><a href="{% url 'blog:edit_profile' %}">编辑个人信息</a></h1>
+<h1><a href="{% url 'blog:change_password' %}">修改密码</a></h1>
+<h1><a href="{% url 'blog:dengchu' %}">登出</a></h1>
+{{ editForm.errors }}
+<form action="" method="POST">
+    {% csrf_token %}
+    <p>
+        <label for="id_username">用户名:</label>
+        <input type="text" name="username" value="{{ user.username }}" maxlength="150" required
+                                                    id="id_username">
+        <span class="helptext">必填。150个字符或者更少。包含字母，数字和仅有的@/./+/-/_符号。</span>
+    </p>
+    <p>
+        <label for="id_email">电子邮件地址:</label>
+        <input type="email" name="email" value="{{ user.email }}" maxlength="254"
+                                                    id="id_email">
+    </p>
+    <p>
+        <label for="id_nicheng">Nicheng:</label>
+        <input type="text" name="nicheng" maxlength="50" id="id_nicheng" value="{{ user.vipone.nicheng }}">
+    </p>
+    <p>
+        <label for="id_birthday">Birthday:</label>
+        <input type="date" name="birthday" id="id_birthday" value="{{ user.vipone.birthday }}">
+    </p>
+    <button type="submit">提交</button>
+</form>
+</body>
+</html>

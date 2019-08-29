@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1><a href="{% url 'blog:index' %}">回到主页</a> </h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ 错误 }}
+        <input type="text" name="用户名" placeholder="用户名"/>
+        <input type="password" name="密码" placeholder="密码"/>
+        <button type="submit">登录</button>
+    </form>
+</body>
+</html>

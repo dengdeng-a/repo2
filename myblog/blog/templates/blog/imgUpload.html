@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="img">
+    <input type="submit" value="上传">
+</form>
+
+
+<br><br>
+
+<a href="{% url 'blog:showImg' %}">显示图片</a>
+</body>
+</html>

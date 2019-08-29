@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <h1><a href="{% url 'blog:index' %}">回到主页</a></h1>
+        <h1><a href="{% url 'blog:edit_profile' %}">编辑个人信息</a></h1>
+        <h1><a href="{% url 'blog:change_password' %}">修改密码</a></h1>
+        <h1><a href="{% url 'blog:dengchu' %}">登出</a></h1>
+
+        <div>
+            <p>用户名：{{ yonghuInfo.username }}</p><br>
+            <p>邮箱：{{ yonghuInfo.email }}</p><br>
+            <p>生日：{{ yonghuInfo.vipone.birthday }}</p><br>
+            <p>昵称：{{ yonghuInfo.vipone.nicheng }}</p><br>
+        </div>
+
+</body>
+</html>

@@ -1,0 +1,4 @@
+rbac app：里面用户权限相关的东西
+web  app:相关操作
+middleware  ：中间件  权限控制
+白名单：settings.py  VALID_URL
